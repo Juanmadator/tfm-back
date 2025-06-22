@@ -1,5 +1,5 @@
 const http = require('http'); 
-const app = require('./src/app.js');
+const app = require('./src/index.js');
 const connectDB = require('./src/config/database.js');
 const { initializeWebSocket } = require('./websocket.js');
 
