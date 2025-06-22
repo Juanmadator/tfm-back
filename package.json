@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon index.js"
+     "start": "node src/app.js", 
+     "dev": "nodemon src/app.js" 
   },
   "keywords": [],
   "author": "Juan Manuel Adame",
