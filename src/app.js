@@ -26,7 +26,19 @@ cloudinary.config({
   secure: true // Strongly recommended
 });
 
-app.use(cors());
+const allowedOrigins = ['https://jadator-jobday.netlify.app/']; 
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('No permitido por CORS'));
+    }
+  }
+};
+
+app.use(cors(corsOptions));
 
 app.use(express.json());
 
@@ -40,17 +52,14 @@ app.use(fileUpload({
   createParentPath: true
 }));
 
-// const limiter = rateLimit({
-//   windowMs: 15 * 60 * 1000,
-//   max: 100,
-//   message: 'Demasiadas peticiones desde esta IP, intenta más tarde.',
-// });
-// app.use(limiter);
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 100,
+  message: 'Demasiadas peticiones desde esta IP, intenta más tarde.',
+});
+app.use(limiter);
 
-// Note: If all image serving will be from Cloudinary, you might not need this line:
-// app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
-// Your existing API routes
 app.use("/api/images", imageRoutes); // Keep this if you still have local image serving
 app.use('/api/usuarios', usuarioRoutes);
 app.use("/api/empresas", empresaRoutes);
