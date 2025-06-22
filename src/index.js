@@ -26,7 +26,7 @@ cloudinary.config({
   secure: true // Strongly recommended
 });
 
-const allowedOrigins = ['https://jadator-jobday.netlify.app/']; 
+const allowedOrigins = ['https://jadator-jobday.netlify.app']; 
 
 const corsOptions = {
   origin: (origin, callback) => {
