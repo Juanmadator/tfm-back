@@ -1,9 +1,9 @@
-import nodemailer from "nodemailer";
-import dotenv from "dotenv";
+const nodemailer = require("nodemailer");
+const dotenv = require("dotenv");
 
 dotenv.config();
 
-export const sendEmail = async (nombre, email, comentario) => {
+const sendEmail = async (nombre, email, comentario) => {
   const htmlContent = `
   <div style="font-family: Arial, sans-serif; color: #333; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
     <h2 style="color: #4CAF50;">¡Nuevo registro!</h2>
@@ -31,3 +31,5 @@ export const sendEmail = async (nombre, email, comentario) => {
     html: htmlContent,
   });
 };
+
+module.exports = { sendEmail };
