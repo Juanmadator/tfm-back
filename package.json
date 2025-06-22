@@ -2,30 +2,6 @@
   "name": "routes",
   "version": "1.0.0",
   "main": "server.js",
-
-    "builds": [
-    {
-      "src": "backend/src/server.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/backend/src/server.js"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ],
   "scripts": {
      "start": "node src/index.js", 
      "dev": "nodemon src/index.js" 
