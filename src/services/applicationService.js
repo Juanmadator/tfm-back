@@ -1,4 +1,4 @@
-const Application = require('../models/ApplicationModel.js')
+const Application = require('../models/Application.js')
 
 async function createApplication(ofertaId, usuarioId) {
   const existingApplication = await Application.findOne({
