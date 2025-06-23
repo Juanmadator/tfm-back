@@ -29,8 +29,6 @@ async function crearOfertaTrabajo(data, adminId) {
 const obtenerTodasOfertasTrabajo = async (filtros = {}) => {
   try {
     const { titulo, ubicacion } = filtros;
-    
-    // Un array que contendrá todas las condiciones de búsqueda
     const queryParts = [];
 
     if (titulo) {
@@ -40,15 +38,11 @@ const obtenerTodasOfertasTrabajo = async (filtros = {}) => {
       queryParts.push({ ubicacion: { $regex: ubicacion, $options: 'i' } });
     }
 
-    // Si hay al menos una condición, usamos $or. Si no, la query queda vacía y devuelve todo.
     const query = queryParts.length > 0 ? { $or: queryParts } : {};
-
-    console.log('Query de MongoDB construida:', JSON.stringify(query));
 
     const ofertas = await OfertaTrabajo.find(query)
                                       .populate('id_empresa', 'nombre url_logo')
                                       .sort({ createdAt: -1 });
-    
     console.log(`Encontradas ${ofertas.length} ofertas`);
     return ofertas;
   } catch (error) {

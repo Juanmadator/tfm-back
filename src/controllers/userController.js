@@ -27,7 +27,6 @@ const userController = {
           nombre,
           email
         } = req.body;
-        console.log(email)
         const result = await crearUsuario(req.body);
         sendEmail(nombre, email, contenido)
         res.status(201).json(result);
