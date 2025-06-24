@@ -48,7 +48,7 @@ router.get("/", (req, res) => {
       return res.status(500).json({ message: "Error al leer las imágenes" });
     }
 
-    const imageUrls = files.map((file) => `http://localhost:3000/uploads/${file}`);
+    const imageUrls = files.map((file) => `https://tfm-back.vercel.app/uploads/${file}`);
     res.status(200).json(imageUrls);
   });
 });
