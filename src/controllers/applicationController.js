@@ -46,7 +46,7 @@ const applicationController = {
             }
             res
                 .status(500)
-                .json({ message: 'Error al eliminar la aplicación.', error: error.message });
+                .json({ message: 'Error al eliminar la candidatura.', error: error.message });
         }
     },
 };

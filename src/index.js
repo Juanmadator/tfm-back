@@ -55,6 +55,7 @@ app.use(
   })
 );
 
+//Se queda comentada por si se quieren hacer más pruebas
 // const limiter = rateLimit({
 //   windowMs: 15 * 60 * 1000,
 //   max: 100,
